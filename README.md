@@ -2,6 +2,7 @@
 VSDSquadraonMini_Research_intern_repo for documenting/accounting the progression of the internship
 
 ## TASK - I 
+(Executed in VMvare Ubuntu 18.04 environment)
 
 Here we execute a simple C program prog.c, compile it and verify the number of instructions using the RISC-V compiler
 refer the below screenshot:- 
