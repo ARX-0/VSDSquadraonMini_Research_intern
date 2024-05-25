@@ -7,6 +7,7 @@ Here we execute a simple C program prog.c, compile it and verify the number of i
 refer the below screenshot:- 
 
 ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20211122.png)
+
 the above programme adds all the numbers form 1 to n and produces the output
 Now we aim on converting the C programme to assembly code, the process goes as follows:
 
