@@ -1,0 +1,2 @@
+# VSDSquadraonMini_Research_intern
+VSDSquadraonMini_Research_intern_repo for documenting/accounting the progression of the internship
