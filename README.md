@@ -1,52 +1,74 @@
 # VSDSquadraonMini_Research_intern
-VSDSquadraonMini_Research_intern_repo for documenting/accounting the progression of the internship
 
-## TASK - I 
-(Executed in VMvare Ubuntu 18.04 environment)
+Repository for documenting and accounting the progression of the internship.
 
-Here we execute a simple C program prog.c, compile it and verify the number of instructions using the RISC-V compiler
-refer the below screenshot:- 
+## TASK - I
+
+(Executed in VMware Ubuntu 18.04 environment)
+
+### Objective
+
+To execute a simple C program (`prog.c`), compile it, and verify the number of instructions using the RISC-V compiler. Refer to the screenshot below:
 
 ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20211122.png)
 
-the above programme adds all the numbers form 1 to n and produces the output
-Now we aim on converting the C programme to assembly code, the process goes as follows:
+The above program adds all the numbers from 1 to `n` and produces the output.
 
-    riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o prog.o prog.c
-    ls -ltr prog.o
-    riscv64-unknown-elf-objdump -d prog.o
-or use " riscv64-unknown-elf-objdump -d prog.o | less "
-### Explaination:
+### Steps to Convert the C Program to Assembly Code
 
-"-march=rv64i" : Specifies the target architecture, in this case, RV64I (RISC-V 64-bit integer base ISA).
+1. **Compile the Program:**
 
-"-o prog.o" : Specifies the output file name, prog.o in this case.
+   ```sh
+   riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o prog.o prog.c
+   ls -ltr prog.o
+   riscv64-unknown-elf-objdump -d prog.o
+   ```
 
-"prog.c" : The input C source file.
+   Or use:
 
-The ouput folder prog.o is created and gets opened as shown below:
+   ```sh
+   riscv64-unknown-elf-objdump -d prog.o | less
+   ```
 
-![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210910.png)
+2. **Explanation:**
 
-search for the main using /main and n consecutively with the below output: 
+   - `-march=rv64i`: Specifies the target architecture (RV64I - RISC-V 64-bit integer base ISA).
+   - `-o prog.o`: Specifies the output file name (`prog.o`).
+   - `prog.c`: The input C source file.
 
-![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210910.png)
+3. **Output:**
 
-now we observe that the main ends at 100b0 and starts at the instruction 10184 
-end - start gives us the value of 2C in the programer mode of calculator at HEX mode which is divided by 4 to give the number of instructions which is 11.
+   The output file `prog.o` is created and displayed as shown below:
 
-similarly when using the (Ofast instead of O1)  
-      
-         riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o prog.o prog.c
-         riscv64-unknown-elf-objdump -d prog.o | less
-and repeating the above process we get the following output 
-![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210916.png)
+   ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210910.png)
 
-![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210905.png)
+4. **Inspecting the Assembly Code:**
 
-it gives the ouput 11 in DEC which is the number of instructions observed in the <main>
+   Search for the `main` function using `/main` and `n` consecutively to navigate through the output:
 
+   ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210910.png)
 
+   - Observe that the `main` function ends at `100b0` and starts at the instruction `10184`.
+   - Subtract the start address from the end address: `100b0 - 10184 = 2C` in hexadecimal.
+   - Convert `2C` to decimal and divide by 4 to get the number of instructions: `2C (hex) = 44 (dec) / 4 = 11 instructions`.
 
+5. **Optimized Compilation:**
 
+   Repeat the above process with the `-Ofast` optimization flag:
 
+   ```sh
+   riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o prog.o prog.c
+   riscv64-unknown-elf-objdump -d prog.o | less
+   ```
+
+   The output is as follows:
+
+   ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210916.png)
+
+   ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20210905.png)
+
+   The result shows `11` instructions in the `main` function.
+
+---
+
+By following these steps, you can verify the number of instructions in the compiled RISC-V assembly code.
