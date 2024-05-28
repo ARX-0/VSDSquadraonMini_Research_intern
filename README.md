@@ -72,3 +72,41 @@ The above program adds all the numbers from 1 to `n` and produces the output.
 ---
 
 By following these steps, you can verify the number of instructions in the compiled RISC-V assembly code.
+
+## TASK-II
+
+MAIN AIM OF THIS TASK IS TO UNDERSTAND THE VARIOUS RISC-V INSTRUCTIONS AND WHERE IT IS BEING USED.
+
+The documentation used is the official RISC-V spec sheet and the Green card (the card with all instructions).
+
+The documentation used is referred [here](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/RISC-V%20learning%20resources).
+
+My previous encounters with these processors are documented [HERE](https://github.com/ARX-0/RISC-V_single_cycle_processor); it's a single cycle processor with a limited instruction set.
+
+Sure! Here are the stages as bullet points:
+
+- **IF**: Instruction Fetch
+- **ID**: Instruction Decode
+- **EX**: Execute
+- **MEM**: Memory Access
+- **WB
+
+#### **IF** Instruction Fetch
+
+The PC or the program counter increments the value of the address-pointer (address) by four for every clock cycle, from the existing (current) instruction to the next instruction, thereby effectively fetching information.
+This gives us how the IF (Instruction Fetch) takes place.
+
+#### **ID** Instruction Decode
+
+In the (Instruction Decode) ID, it decodes the current instruction given by the current address via the PC (program counter). They are categorised into the following R, I, S, B, U, J
+(types of instruction sets) following the RV32I base integer instruction set.
+
+THE CATEGORIES THAT THE INSTRUCTION SETS ARE CATEGORISED INTO ARE REPRESENTED BELOW
+
+ALL BASIC INSTRUCTION SETS IN RISC-V 
+
+after DECODING into these perticular instruction sets the 32 bit instruction is then executed
+
+EX (Execute)
+
+
