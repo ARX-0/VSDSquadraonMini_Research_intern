@@ -170,7 +170,8 @@ AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC 
 
 #### J Type Instruction
 
-![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/j%20type%20instruction.png)
+<img src="https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/j%20type%20instruction.png" alt="J Type Instruction" width="665" height="102">
+
 
 ![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/unbrch.png)
 
