@@ -122,11 +122,9 @@ after DECODING into these perticular instruction sets the 32 bit instruction is 
 ![R type instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png)
 
    
-Here in the R type instruction. All operations read the rs1 and rs2 registers (the source registers)
-as source operands and write the result into register rd (the target register) .
-
-
-The funct7 and funct3 fields select the type of operation.
+Here in the R type instruction. All operations read the [19:15] rs1 and [24:20] rs2 registers (the source registers)
+as source operands and write the result into register [11:7] rd (the target register) .
+The [31:25] funct7 and [14:12] funct3 fields select the type of operation finally the opcode for R-type instruction is [6:0].
 
 ADD and SUB perform addition and subtraction respectively. 
 
@@ -158,5 +156,9 @@ and the sign-extended 12-bit immediate and place the result in rd. Note an examp
 a bitwise logical inversion of register rs1
 
 rd = rs & imm ,rd = rs | imm ,rd = rs ^ imm are some examples respectively.
+
+#### U Type Instruction 
+   
+
 
 
