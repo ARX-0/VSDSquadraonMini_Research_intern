@@ -109,8 +109,7 @@ In the (Instruction Decode) ID, it decodes the current instruction given by the 
 
 THE CATEGORIES THAT THE INSTRUCTION SETS ARE CATEGORISED INTO ARE REPRESENTED BELOW
 
-   
-![ALL BASIC INSTRUCTION SETS IN RISC-V ](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Screenshot%202024-05-28%20081711.png)
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Screenshot%202024-05-28%20081711.png" alt="I type jump insrt JALR" width="665">
 
 
 after DECODING into these perticular instruction sets the 32 bit instruction is then executed
@@ -118,8 +117,8 @@ after DECODING into these perticular instruction sets the 32 bit instruction is 
 ### EX (Execute)
  #### R Type Instruction
 
-   
-![R type instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png)
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png" alt="I type jump insrt JALR" width="665">
+
 
    
 Here in the R type instruction. All operations read the [19:15] rs1 and [24:20] rs2 registers (the source registers)
@@ -139,7 +138,8 @@ SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shif
 
 #### I Type Instruction 
 
-![ I Type Instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/i%20type%20instruction%20decoding%20.png)
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/i%20type%20instruction%20decoding%20.png" alt="I type jump insrt JALR" width="665">
+
 
 Here in the I type instruction we have [31:20] as the 11'b immidiate exteder value (with a sign extend) ,[19:15] the source register adress ,[14:12] function3 (which denotes the type of the function used say ADDI/SLTI/XORI etc) ,[11:7] has the adress of the source register ,[6:0] has the opcode of the immmidiate instruction set.
 
@@ -157,16 +157,20 @@ a bitwise logical inversion of register rs1
 
 rd = rs & imm ,rd = rs | imm ,rd = rs ^ imm are some examples respectively.
 
-#### U Type Instruction 
+#### S Type Instruction
 
-![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/U%20type%20instruction.png)
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/S%20type%20instructions%20.png" alt="I type jump insrt JALR" width="665">
 
-The U type instruction has [31:12]immidiate extender ,[11:7]destination register (rd) , [6:0] opcode for the U type instruction LUI or the AUIPC .
+The S or shift type instruction is a type of I type instruction but with the immidiate extender value bits split into two 
+imm[11:5] as [31:25] and the imm[4:0] as the [24:20] instead of the conventional [31:20] being the immidiate extender.
 
-LUI (load upper immediate) is used to build 32-bit constants,LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest
-12 bits with zeros.
+ The operand to be shiftedis in rs1, and the shift amount is encoded in the lower 5 bits of the I-immediate field. The right shift type is encoded in a high bit of the I-immediate. 
 
-AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
+SLLI is a logical left shift (zeros are shifted into the lower bits).
+
+SRLI is a logical right shift (zeros are shifted into the upper bits).
+
+SRAI is an arithmetic right shift (the original sign bit is copied into the vacated upper bits).
 
 #### J Type Instruction
 
@@ -189,8 +193,32 @@ is written to register [11:7] rd. (Optional case :-Register x0 can be used as th
 riscv-spec-v2.2.pdf attached above in the same repo :) 
 
 
+#### U Type Instruction 
 
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/U%20type%20instruction.png" alt="I type jump insrt JALR" width="665">
+
+
+The U type instruction has [31:12]immidiate extender ,[11:7]destination register (rd) , [6:0] opcode for the U type instruction LUI or the AUIPC .
+
+LUI (load upper immediate) is used to build 32-bit constants,LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest
+12 bits with zeros.
+
+AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
    
+ 
+#### B Type Instruction 
 
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/S%20type%20instructions%20.png" alt="I type jump insrt JALR" width="665">
+
+The 12-bit B-immediate encodes signed offsets in multiples of 2, and is added to the current pc (current adress) to give the target address.
+
+Branch instructions compare two registers. 
+BEQ and BNE take the branch if registers [19:15] rs1 and [24:20] rs2 are equal or unequal respectively. 
+
+BLT and BLTU take the branch if rs1 is less than rs2, using signed and unsigned comparison respectively.
+
+BGE and BGEU take the branch if rs1 is greater than or equal to rs2, using signed and unsigned comparison respectively.
+
+Note, BGT, BGTU, BLE, and BLEU can be synthesized by reversing the operands to BLT, BLTU, BGE, and BGEU, respectively.
 
 
