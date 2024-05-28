@@ -121,12 +121,23 @@ after DECODING into these perticular instruction sets the 32 bit instruction is 
    
 ![R type instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png)
 
-<div>
    
 Here in the R type instruction. All operations read the rs1 and rs2 registers (the source registers)
 as source operands and write the result into register rd (the target register) .
-The funct7 and funct3 fields select the type of operation.ADD and SUB perform addition and subtraction respectively. SLT and SLTU perform signed and unsigned compares respectively. That is rd becomes (1) if rs1 < rs2 ,otherwise it is made zero (0) . In the operation of SLTU the registers rd,x0,rs2 sets rd to (1) one if and only if rs2 is not equal to zero. otherwise rd is set to zero (0) . AND, OR, and XOR perform bitwise logical operations.SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in
-register rs1 by the shift amount held in the lower 5 bits of register rs2.
+
+
+The funct7 and funct3 fields select the type of operation.
+
+ADD and SUB perform addition and subtraction respectively. 
+
+SLT and SLTU perform signed and unsigned compares respectively.
+
+That is rd becomes (1) if rs1 < rs2 ,otherwise it is made zero (0) .
+
+In the operation of SLTU the registers rd,x0,rs2 sets rd to (1) one if and only if rs2 is not equal to zero.
+Otherwise rd is set to zero (0) .
+
+AND, OR, and XOR perform bitwise logical operations.SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
 
 
 
