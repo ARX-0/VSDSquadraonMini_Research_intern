@@ -11,7 +11,7 @@ Repository for documenting and accounting the progression of the internship.
 To execute a simple C program (`prog.c`), compile it, and verify the number of instructions using the RISC-V compiler. Refer to the screenshot below:
 
 ![Annotated Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Annotation%202024-05-25%20211122.png)
-
+   
 The above program adds all the numbers from 1 to `n` and produces the output.
 
 ### Steps to Convert the C Program to Assembly Code
@@ -91,7 +91,7 @@ Sure! Here are the stages as bullet points:
 - **MEM**: Memory Access
 - **WB**: Register Write Back
   
-<div align = "center" >
+
    
 ### **IF** (Instruction Fetch)
 
@@ -105,16 +105,25 @@ In the (Instruction Decode) ID, it decodes the current instruction given by the 
 
 THE CATEGORIES THAT THE INSTRUCTION SETS ARE CATEGORISED INTO ARE REPRESENTED BELOW
 
+<div align = "center" >
+   
 ![ALL BASIC INSTRUCTION SETS IN RISC-V ](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Screenshot%202024-05-28%20081711.png)
+
+<div>
 
 after DECODING into these perticular instruction sets the 32 bit instruction is then executed
 
 ### EX (Execute)
  #### R Type instruction
+
+<div align = "center" >
+   
 ![R type instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png)
 
+<div>
+   
 Here in the R type instruction. All operations read the rs1 and rs2 registers (the source registers)
 as source operands and write the result into register rd (the target register) .
 The funct7 and funct3 fields select the type of operation.ADD and SUB perform addition and subtraction respectively. SLT and SLTU perform signed and unsigned compares respectively. That is rd becomes (1) if rs1 < rs2 ,otherwise it is made zero (0) . In the operation of SLTU the registers rd,x0,rs2 sets rd to (1) one if and only if rs2 is not equal to zero. otherwise rd is set to zero (0) 
 
-</div>
+
