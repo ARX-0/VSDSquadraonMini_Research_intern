@@ -172,9 +172,6 @@ AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC 
 
 <img src="https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/j%20type%20instruction.png" alt="J Type Instruction" width="665" height="102">
 
-
-![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/unbrch.png)
-
 In the J type instruction is of two types unconditional jumps and conditional branches.
 
 JAL or the jump and link instruction uses the J-type format, where the J-immediate encodes a
@@ -182,11 +179,17 @@ signed offset in multiples of 2 bytes. The offset is sign-extended and added to 
 jump target address. Jumps can therefore target a ±1 MiB range. JAL stores the address of the
 instruction following the jump (pc+4){the increment in pc} into register rd.We use the x1 as the return address register and x5 as an alternate link register.
 
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/unbrch.png" alt="I type jump insrt JALR" width="665" height="102">
+
 JALR or the jump and link register (is an indirect jump instruction but here we use I type encoding instead of the J type encoding)
 
 The target address is obtained by adding the 12-bit signed I-immediate to the register [19:15] rs1, then setting the
 least-significant bit of the result to zero. The [14:12] function3 is set to all zeros .The address of the instruction following the jump (pc+4)
-is written to register [11:7] rd. (Optional case :-Register x0 can be used as the destination if the result is not required.)
+is written to register [11:7] rd. (Optional case :-Register x0 can be used as the destination if the result is not required.) the pop and push that comes along with it are out of the scope of this repo refer the resources pg 17 of the 
+riscv-spec-v2.2.pdf attached above in the same repo :) 
+
+
+
    
 
 
