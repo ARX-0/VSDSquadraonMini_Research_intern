@@ -136,7 +136,7 @@ Otherwise rd is set to zero (0).}
 AND, OR, and XOR perform bitwise logical operations.
 SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
 
-eg:-
+examples:-
 1. **ADD r6, r2, r1**
    - Opcode: `0110011`
    - Funct3: `000`
@@ -145,7 +145,7 @@ eg:-
    - rs1: `00001`  // represent as 5'b1
    - rs2: `00010`  // represent as 5'b2
    - Instruction Code: `0000000 00010 00001 000 00110 0110011`
-   - 
+     
 2. **SUB r7, r1, r2**
    - Opcode: `0110011`
    - Funct3: `000`
@@ -154,7 +154,7 @@ eg:-
    - rs1: `00001`
    - rs2: `00010`
    - Instruction Code: `0100000 00010 00001 000 00111 0110011`
-   - 
+     
 3. **AND r8, r1, r3**
    - Opcode: `0110011`
    - Funct3: `111`
@@ -163,7 +163,7 @@ eg:-
    - rs1: `00001`
    - rs2: `00011`
    - Instruction Code: `0000000 00011 00001 111 01000 0110011`
-   - 
+     
 4. **OR r9, r2, r5**
    - Opcode: `0110011`
    - Funct3: `110`
@@ -172,7 +172,7 @@ eg:-
    - rs1: `00010`
    - rs2: `00101`
    - Instruction Code: `0000000 00101 00010 110 01001 0110011`
-   - 
+     
 5. **XOR r10, r1, r4**
    - Opcode: `0110011`
    - Funct3: `100`
@@ -181,7 +181,7 @@ eg:-
    - rs1: `00001`
    - rs2: `00100`
    - Instruction Code: `0000000 00100 00001 100 01010 0110011`
-   - 
+     
 6. **SLT r11, r2, r4**
    - Opcode: `0110011`
    - Funct3: `010`
@@ -190,7 +190,26 @@ eg:-
    - rs1: `00010`
    - rs2: `00100`
    - Instruction Code: `0000000 00100 00010 010 01011 0110011`
-   - 
+     
+7. **SRL r16, r14, r2**
+   - Opcode: `0110011`
+   - Funct3: `101`
+   - Funct7: `0000000`
+   - rd: `10000`
+   - rs1: `01110`
+   - rs2: `00010`
+   - Instruction Code: `0000000 00010 01110 101 10000 0110011
+     
+8. **SLL r15, r1, r2**
+   - Opcode: `0110011`
+   - Funct3: `001`
+   - Funct7: `0000000`
+   - rd: `01111`
+   - rs1: `00001`
+   - rs2: `00010`
+   - Instruction Code: `0000000 00010 00001 001 01111 0110011`
+     
+     
 #### I Type Instruction 
 
 <img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/i%20type%20instruction%20decoding%20.png" alt="I type jump insrt JALR" width="665">
@@ -212,12 +231,37 @@ a bitwise logical inversion of register rs1
 
 rd = rs & imm ,rd = rs | imm ,rd = rs ^ imm are some examples respectively.
 
+examples:-
+1. **ADDI r12, r4, 5**
+   - Opcode: `0010011`
+   - Funct3: `000`
+   - rd: `01100`
+   - rs1: `00100`
+   - imm: `000000000101`
+   - Instruction Code: `0000000 000101 00100 000 01100 0010011` 
+
+2. **LW r13, r1, 2**
+   - Opcode: `0000011`
+   - Funct3: `010`
+   - rd: `01101`
+   - rs1: `00001`
+   - imm: `000000000010`
+   - Instruction Code: `0000000 000010 00001 010 01101 0000011`
+
 #### S Type Instruction
 
 <img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/S%20type%20instructions%20.png" alt="I type jump insrt JALR" width="665">
 
 The S or shift type instruction is a type of I type instruction but with the immidiate extender value bits split into two 
 imm[11:5] as [31:25] and the imm[4:0] as the [24:20] instead of the conventional [31:20] being the immidiate extender.
+
+1. **SW r3, r1, 2**
+   - Opcode: `0100011`
+   - Funct3: `010`
+   - rs1: `00001`
+   - rs2: `00011`
+   - imm: `000000000010` (split as 5-bit imm[11:5] and 7-bit imm[4:0])
+   - Instruction Code: `0000000 00011 00001 010 00010 0100011`
 
  The operand to be shiftedis in rs1, and the shift amount is encoded in the lower 5 bits of the I-immediate field. The right shift type is encoded in a high bit of the I-immediate. 
 
@@ -263,7 +307,7 @@ AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC 
  
 #### B Type Instruction 
 
-<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/S%20type%20instructions%20.png" alt="I type jump insrt JALR" width="665">
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/B%20type%20instruction%20.png" alt="I type jump insrt JALR" width="665">
 
 The 12-bit B-immediate encodes signed offsets in multiples of 2, and is added to the current pc (current adress) to give the target address.
 
@@ -276,11 +320,30 @@ BGE and BGEU take the branch if rs1 is greater than or equal to rs2, using signe
 
 Note, BGT, BGTU, BLE, and BLEU can be synthesized by reversing the operands to BLT, BLTU, BGE, and BGEU, respectively.
 
+example:-
+
+1. **BNE r0, r1, 20**
+   - Opcode: `1100011`
+   - Funct3: `001`
+   - rs1: `00000`
+   - rs2: `00001`
+   - imm: `00000000010100` (split as imm[12], imm[10:5], imm[4:1], imm[11])
+   - Instruction Code: `0000000 00101 00000 001 00001 1100011`
+
+2. **BEQ r0, r0, 15**
+   - Opcode: `1100011`
+   - Funct3: `000`
+   - rs1: `00000`
+   - rs2: `00000`
+   - imm: `00000000001111` (split as imm[12], imm[10:5], imm[4:1], imm[11])
+   - Instruction Code: `0000000 01111 00000 000 00000 1100011`
+
+
 ### MEM (Memory Access)
 
 #### Load Word Instruction & Store worrd instruction
 
-<img src = "[https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/S%20type%20instructions%20.png](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Load%20and%20Store%20instruction%20.png)" alt="I type jump insrt JALR" width="665">
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Load%20and%20Store%20instruction%20.png" alt="I type jump insrt JALR" width="665">
 
 It basically dose read data or writes data to memory. Consisting of the above instructions LW and SW load word and store word respectively, load and store instructions transfer a value between the registers and memory. (register ---> memory)
 
