@@ -270,40 +270,6 @@ SLLI is a logical left shift (zeros are shifted into the lower bits).
 SRLI is a logical right shift (zeros are shifted into the upper bits).
 
 SRAI is an arithmetic right shift (the original sign bit is copied into the vacated upper bits).
-
-#### J Type Instruction
-
-<img src="https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/j%20type%20instruction.png" alt="J Type Instruction" width="665" height="102">
-
-In the J type instruction is of two types unconditional jumps and conditional branches.
-
-JAL or the jump and link instruction uses the J-type format, where the J-immediate encodes a
-signed offset in multiples of 2 bytes. The offset is sign-extended and added to the pc to form the
-jump target address. Jumps can therefore target a ±1 MiB range. JAL stores the address of the
-instruction following the jump (pc+4){the increment in pc} into register rd.We use the x1 as the return address register and x5 as an alternate link register.
-
-<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/unbrch.png" alt="I type jump insrt JALR" width="665" height="102">
-
-JALR or the jump and link register (is an indirect jump instruction but here we use I type encoding instead of the J type encoding)
-
-The target address is obtained by adding the 12-bit signed I-immediate to the register [19:15] rs1, then setting the
-least-significant bit of the result to zero. The [14:12] function3 is set to all zeros .The address of the instruction following the jump (pc+4)
-is written to register [11:7] rd. (Optional case :-Register x0 can be used as the destination if the result is not required.) the pop and push that comes along with it are out of the scope of this repo refer the resources pg 17 of the 
-riscv-spec-v2.2.pdf attached above in the same repo :) 
-
-
-#### U Type Instruction 
-
-<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/U%20type%20instruction.png" alt="I type jump insrt JALR" width="665">
-
-
-The U type instruction has [31:12]immidiate extender ,[11:7]destination register (rd) , [6:0] opcode for the U type instruction LUI or the AUIPC .
-
-LUI (load upper immediate) is used to build 32-bit constants,LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest
-12 bits with zeros.
-
-AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
-   
  
 #### B Type Instruction 
 
@@ -339,6 +305,40 @@ example:-
    - Instruction Code: `0000000 01111 00000 000 00000 1100011`
 
 
+#### J Type Instruction
+
+<img src="https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/j%20type%20instruction.png" alt="J Type Instruction" width="665" height="102">
+
+In the J type instruction is of two types unconditional jumps and conditional branches.
+
+JAL or the jump and link instruction uses the J-type format, where the J-immediate encodes a
+signed offset in multiples of 2 bytes. The offset is sign-extended and added to the pc to form the
+jump target address. Jumps can therefore target a ±1 MiB range. JAL stores the address of the
+instruction following the jump (pc+4){the increment in pc} into register rd.We use the x1 as the return address register and x5 as an alternate link register.
+
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/unbrch.png" alt="I type jump insrt JALR" width="665" height="102">
+
+JALR or the jump and link register (is an indirect jump instruction but here we use I type encoding instead of the J type encoding)
+
+The target address is obtained by adding the 12-bit signed I-immediate to the register [19:15] rs1, then setting the
+least-significant bit of the result to zero. The [14:12] function3 is set to all zeros .The address of the instruction following the jump (pc+4)
+is written to register [11:7] rd. (Optional case :-Register x0 can be used as the destination if the result is not required.) the pop and push that comes along with it are out of the scope of this repo refer the resources pg 17 of the 
+riscv-spec-v2.2.pdf attached above in the same repo :) 
+
+
+#### U Type Instruction 
+
+<img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/U%20type%20instruction.png" alt="I type jump insrt JALR" width="665">
+
+
+The U type instruction has [31:12]immidiate extender ,[11:7]destination register (rd) , [6:0] opcode for the U type instruction LUI or the AUIPC .
+
+LUI (load upper immediate) is used to build 32-bit constants,LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest
+12 bits with zeros.
+
+AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
+   
+
 ### MEM (Memory Access)
 
 #### Load Word Instruction & Store worrd instruction
@@ -353,19 +353,27 @@ Load is encoded in the I-type format. The effective byte address is obtained by 
 rs1 to the sign-extended 12-bit offset. Loads copy a value from memory to register rd. Stores copy
 the value in register rs2 to memoryor simply (rs2,rd = rs1 + 12'b offset imm ).
 
+1. **LW r13, r1, 2**
+   - Opcode: `0000011`
+   - Funct3: `010`
+   - rd: `01101`
+   - rs1: `00001`
+   - imm: `000000000010`
+   - Instruction Code: `0000000 000010 00001 010 01101 0000011`
+
 STORE (SW) instruction reads the lower 4 bytes of your source register rs1 and stores them into memory at the address given in the destination operand
 
+### **WB**: Register Write Back
 
+ The Register Write Back (WB) stage is the final step in the execution of an instruction in the RISC-V pipeline. During this stage, the result of the instruction's execution is written back to the register file, making the result available for future instructions. The WB stage is essential for ensuring that the computations performed by the processor are correctly stored and accessible.
 
+Once the data is selected, it is written to the specified destination register (rd). The register file is updated to reflect the new value.
+The control signals ensure that the correct register is updated with the correct data.
 
+Example: ADD rd, rs1, rs2
+In the WB stage, the result from the ALU is written back to the destination register rd.
 
+Example: LW rd, offset(rs1)
+In the WB stage, the data read from memory is written to the destination register rd.
 
-
-
-
-
-
-
-
-
-
+## THIS CONCLUDES TASK II 
