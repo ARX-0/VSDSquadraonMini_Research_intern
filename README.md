@@ -136,6 +136,61 @@ Otherwise rd is set to zero (0).}
 AND, OR, and XOR perform bitwise logical operations.
 SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
 
+eg:-
+1. **ADD r6, r2, r1**
+   - Opcode: `0110011`
+   - Funct3: `000`
+   - Funct7: `0000000`
+   - rd: `00110`   // represent as 5'b6
+   - rs1: `00001`  // represent as 5'b1
+   - rs2: `00010`  // represent as 5'b2
+   - Instruction Code: `0000000 00010 00001 000 00110 0110011`
+   - 
+2. **SUB r7, r1, r2**
+   - Opcode: `0110011`
+   - Funct3: `000`
+   - Funct7: `0100000`
+   - rd: `00111`
+   - rs1: `00001`
+   - rs2: `00010`
+   - Instruction Code: `0100000 00010 00001 000 00111 0110011`
+   - 
+3. **AND r8, r1, r3**
+   - Opcode: `0110011`
+   - Funct3: `111`
+   - Funct7: `0000000`
+   - rd: `01000`
+   - rs1: `00001`
+   - rs2: `00011`
+   - Instruction Code: `0000000 00011 00001 111 01000 0110011`
+   - 
+4. **OR r9, r2, r5**
+   - Opcode: `0110011`
+   - Funct3: `110`
+   - Funct7: `0000000`
+   - rd: `01001`
+   - rs1: `00010`
+   - rs2: `00101`
+   - Instruction Code: `0000000 00101 00010 110 01001 0110011`
+   - 
+5. **XOR r10, r1, r4**
+   - Opcode: `0110011`
+   - Funct3: `100`
+   - Funct7: `0000000`
+   - rd: `01010`
+   - rs1: `00001`
+   - rs2: `00100`
+   - Instruction Code: `0000000 00100 00001 100 01010 0110011`
+   - 
+6. **SLT r11, r2, r4**
+   - Opcode: `0110011`
+   - Funct3: `010`
+   - Funct7: `0000000`
+   - rd: `01011`
+   - rs1: `00010`
+   - rs2: `00100`
+   - Instruction Code: `0000000 00100 00010 010 01011 0110011`
+   - 
 #### I Type Instruction 
 
 <img src = "https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/i%20type%20instruction%20decoding%20.png" alt="I type jump insrt JALR" width="665">
