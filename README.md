@@ -154,7 +154,9 @@ SLTI (set less than immediate) places the value 1 in register rd {if register rs
 Its function is rd, rs1 sets rd to 1 if rs1 equals zero, otherwise sets rd to 0
 
 ANDI, ORI, XORI are logical operations that perform bitwise AND, OR, and XOR on register rs1
-and the sign-extended 12-bit immediate and place the result in rd. Note, XORI rd, rs1, -1 performs
+and the sign-extended 12-bit immediate and place the result in rd. Note an example, XORI rd, rs1, -1 performs
 a bitwise logical inversion of register rs1
+
+rd = rs & imm ,rd = rs | imm ,rd = rs ^ imm are some examples respectively.
 
 
