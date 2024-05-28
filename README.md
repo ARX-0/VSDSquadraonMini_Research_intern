@@ -90,7 +90,9 @@ Sure! Here are the stages as bullet points:
 - **EX**: Execute
 - **MEM**: Memory Access
 - **WB
-
+  
+<div type = center>
+   
 #### **IF** Instruction Fetch
 
 The PC or the program counter increments the value of the address-pointer (address) by four for every clock cycle, from the existing (current) instruction to the next instruction, thereby effectively fetching information.
@@ -103,10 +105,10 @@ In the (Instruction Decode) ID, it decodes the current instruction given by the 
 
 THE CATEGORIES THAT THE INSTRUCTION SETS ARE CATEGORISED INTO ARE REPRESENTED BELOW
 
-ALL BASIC INSTRUCTION SETS IN RISC-V 
+![ALL BASIC INSTRUCTION SETS IN RISC-V ](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Screenshot%202024-05-28%20081711.png)
 
 after DECODING into these perticular instruction sets the 32 bit instruction is then executed
 
-EX (Execute)
+#### EX (Execute)
 
-
+</div>
