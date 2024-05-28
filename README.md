@@ -89,9 +89,9 @@ Sure! Here are the stages as bullet points:
 - **ID**: Instruction Decode
 - **EX**: Execute
 - **MEM**: Memory Access
-- **WB
+- **WB**: Register Write Back
   
-<div type = center>
+<div align = "center" >
    
 #### **IF** Instruction Fetch
 
