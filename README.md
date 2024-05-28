@@ -158,6 +158,17 @@ a bitwise logical inversion of register rs1
 rd = rs & imm ,rd = rs | imm ,rd = rs ^ imm are some examples respectively.
 
 #### U Type Instruction 
+
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/U%20type%20instruction.png)
+
+The U type instruction has [31:12]immidiate extender ,[11:7]destination register (rd) , [6:0] opcode for the U type instruction LUI or the AUIPC .
+
+LUI (load upper immediate) is used to build 32-bit constants,LUI places the U-immediate value in the top 20 bits of the destination register rd, filling in the lowest
+12 bits with zeros.
+
+AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
+
+
    
 
 
