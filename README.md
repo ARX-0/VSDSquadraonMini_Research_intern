@@ -221,4 +221,33 @@ BGE and BGEU take the branch if rs1 is greater than or equal to rs2, using signe
 
 Note, BGT, BGTU, BLE, and BLEU can be synthesized by reversing the operands to BLT, BLTU, BGE, and BGEU, respectively.
 
+### MEM (Memory Access)
+
+#### Load Word Instruction & Store worrd instruction
+
+<img src = "[https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/S%20type%20instructions%20.png](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/Load%20and%20Store%20instruction%20.png)" alt="I type jump insrt JALR" width="665">
+
+It basically dose read data or writes data to memory. Consisting of the above instructions LW and SW load word and store word respectively, load and store instructions transfer a value between the registers and memory. (register ---> memory)
+
+(LOAD is encoded in I type format) where as (the STORE is encoded in S type instruction format) , 
+
+Load is encoded in the I-type format. The effective byte address is obtained by adding register
+rs1 to the sign-extended 12-bit offset. Loads copy a value from memory to register rd. Stores copy
+the value in register rs2 to memoryor simply (rs2,rd = rs1 + 12'b offset imm ).
+
+STORE (SW) instruction reads the lower 4 bytes of your source register rs1 and stores them into memory at the address given in the destination operand
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
