@@ -132,12 +132,12 @@ ADD and SUB perform addition and subtraction respectively.
 
 SLT and SLTU perform signed and unsigned compares respectively.
 
-That is rd becomes (1) if rs1 < rs2 ,otherwise it is made zero (0) .
+{That is rd becomes (1) if rs1 < rs2 ,otherwise it is made zero (0)}.
+{In the operation of SLTU the registers rd,x0,rs2 sets rd to (1) one if and only if rs2 is not equal to zero.
+Otherwise rd is set to zero (0).}
 
-In the operation of SLTU the registers rd,x0,rs2 sets rd to (1) one if and only if rs2 is not equal to zero.
-Otherwise rd is set to zero (0) .
-
-AND, OR, and XOR perform bitwise logical operations.SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
+AND, OR, and XOR perform bitwise logical operations.
+SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
 
 
 
