@@ -93,12 +93,12 @@ Sure! Here are the stages as bullet points:
   
 <div align = "center" >
    
-#### **IF** Instruction Fetch
+### **IF** (Instruction Fetch)
 
 The PC or the program counter increments the value of the address-pointer (address) by four for every clock cycle, from the existing (current) instruction to the next instruction, thereby effectively fetching information.
 This gives us how the IF (Instruction Fetch) takes place.
 
-#### **ID** Instruction Decode
+### **ID** (Instruction Decode)
 
 In the (Instruction Decode) ID, it decodes the current instruction given by the current address via the PC (program counter). They are categorised into the following R, I, S, B, U, J
 (types of instruction sets) following the RV32I base integer instruction set.
@@ -109,6 +109,12 @@ THE CATEGORIES THAT THE INSTRUCTION SETS ARE CATEGORISED INTO ARE REPRESENTED BE
 
 after DECODING into these perticular instruction sets the 32 bit instruction is then executed
 
-#### EX (Execute)
+### EX (Execute)
+ #### R Type instruction
+![R type instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png)
+
+Here in the R type instruction. All operations read the rs1 and rs2 registers (the source registers)
+as source operands and write the result into register rd (the target register) .
+The funct7 and funct3 fields select the type of operation.ADD and SUB perform addition and subtraction respectively. SLT and SLTU perform signed and unsigned compares respectively. That is rd becomes (1) if rs1 < rs2 ,otherwise it is made zero (0) . In the operation of SLTU the registers rd,x0,rs2 sets rd to (1) one if and only if rs2 is not equal to zero. otherwise rd is set to zero (0) 
 
 </div>
