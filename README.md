@@ -145,6 +145,16 @@ SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shif
 
 Here in the I type instruction we have [31:20] as the 11'b immidiate exteder value (with a sign extend) ,[19:15] the source register adress ,[14:12] function3 (which denotes the type of the function used say ADDI/SLTI/XORI etc) ,[11:7] has the adress of the source register ,[6:0] has the opcode of the immmidiate instruction set.
 
+ADDI(increment/decrement function) adds the sign-extended 12-bit immediate to register rs1. Arithmetic overflow is ignored
+and the result is simply the lower \*width of an x register\* bits of the result.
 
+SLTI (set less than immediate) places the value 1 in register rd {if register rs1 is less than the signextended immediate when both are treated as signed numbers}, else 0 is written to rd.
+
+ SLTIU is similar but compares the values as unsigned numbers
+Its function is rd, rs1 sets rd to 1 if rs1 equals zero, otherwise sets rd to 0
+
+ANDI, ORI, XORI are logical operations that perform bitwise AND, OR, and XOR on register rs1
+and the sign-extended 12-bit immediate and place the result in rd. Note, XORI rd, rs1, -1 performs
+a bitwise logical inversion of register rs1
 
 
