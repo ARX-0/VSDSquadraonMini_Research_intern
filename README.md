@@ -116,7 +116,7 @@ THE CATEGORIES THAT THE INSTRUCTION SETS ARE CATEGORISED INTO ARE REPRESENTED BE
 after DECODING into these perticular instruction sets the 32 bit instruction is then executed
 
 ### EX (Execute)
- #### R Type instruction
+ #### R Type Instruction
 
    
 ![R type instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/R%20type%20instruction.png)
@@ -138,6 +138,13 @@ Otherwise rd is set to zero (0).}
 
 AND, OR, and XOR perform bitwise logical operations.
 SLL, SRL, and SRA perform logical left, logical right, and arithmetic right shifts on the value in register rs1 by the shift amount held in the lower 5 bits of register rs2.
+
+#### I Type Instruction 
+
+![ I Type Instruction](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/i%20type%20instruction%20decoding%20.png)
+
+Here in the I type instruction we have [31:20] as the 11'b immidiate exteder value (with a sign extend) ,[19:15] the source register adress ,[14:12] function3 (which denotes the type of the function used say ADDI/SLTI/XORI etc) ,[11:7] has the adress of the source register ,[6:0] has the opcode of the immmidiate instruction set.
+
 
 
 
