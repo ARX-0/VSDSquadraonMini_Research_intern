@@ -168,7 +168,24 @@ LUI (load upper immediate) is used to build 32-bit constants,LUI places the U-im
 
 AUIPC (add upper immediate to pc) is used to build pc-relative addresses. AUIPC forms a 32-bit offset from the 20-bit U-immediate, filling in the lowest 12 bits with zeros, adds this offset to the pc, then places the result in register rd.
 
+#### J Type Instruction
 
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/j%20type%20instruction.png)
+
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/unbrch.png)
+
+In the J type instruction is of two types unconditional jumps and conditional branches.
+
+JAL or the jump and link instruction uses the J-type format, where the J-immediate encodes a
+signed offset in multiples of 2 bytes. The offset is sign-extended and added to the pc to form the
+jump target address. Jumps can therefore target a ±1 MiB range. JAL stores the address of the
+instruction following the jump (pc+4){the increment in pc} into register rd.We use the x1 as the return address register and x5 as an alternate link register.
+
+JALR or the jump and link register (is an indirect jump instruction but here we use I type encoding instead of the J type encoding)
+
+The target address is obtained by adding the 12-bit signed I-immediate to the register [19:15] rs1, then setting the
+least-significant bit of the result to zero. The [14:12] function3 is set to all zeros .The address of the instruction following the jump (pc+4)
+is written to register [11:7] rd. (Optional case :-Register x0 can be used as the destination if the result is not required.)
    
 
 
