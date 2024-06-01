@@ -496,3 +496,148 @@ it is as given in the below HTML TABLE
 
 for the waveform marked in purple 0->ADD,1->SUB,2->AND,3->OR,4->XOR,5->SLT,0->ADDI,1->LW,0->SW,0->BEQ
 
+The BEQ is given here as it dint fit there;
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/waveforms_outputs/Screenshot%20from%202024-06-01%2020-16-17.png)
+
+
+```verilog
+REG[0] <= 32'h00000000;
+REG[1] <= 32'd1;
+REG[2] <= 32'd2;
+REG[3] <= 32'd3;
+REG[4] <= 32'd4;
+REG[5] <= 32'd5;
+REG[6] <= 32'd6;
+```
+
+Let's compute the ALU outputs for each instruction based on these initial values.
+
+1. `add r6, r1, r2` (`32'h02208300`):
+   ```
+   r6 = r1 + r2 = 1 + 2 = 3
+   ALU_OUT = 3
+   ```
+
+2. `sub r7, r1, r2` (`32'h02209380`):
+   ```
+   r7 = r1 - r2 = 1 - 2 = -1 (in 32-bit signed integer, this is 0xFFFFFFFF)
+   ALU_OUT = 0xFFFFFFFF
+   ```
+
+3. `and r8, r1, r3` (`32'h0230a400`):
+   ```
+   r8 = r1 & r3 = 1 & 3 = 1
+   ALU_OUT = 1
+   ```
+
+4. `or r9, r2, r5` (`32'h02513480`):
+   ```
+   r9 = r2 | r5 = 2 | 5 = 7
+   ALU_OUT = 7
+   ```
+
+5. `xor r10, r1, r4` (`32'h0240c500`):
+   ```
+   r10 = r1 ^ r4 = 1 ^ 4 = 5
+   ALU_OUT = 5
+   ```
+
+6. `slt r11, r2, r4` (`32'h02415580`):
+   ```
+   r11 = (r2 < r4) ? 1 : 0 = (2 < 4) ? 1 : 0 = 1
+   ALU_OUT = 1
+   ```
+
+7. `addi r12, r4, 5` (`32'h00520600`):
+   ```
+   r12 = r4 + 5 = 4 + 5 = 9
+   ALU_OUT = 9
+   ```
+
+8. `sw r3, r1, 2` (`32'h00209181`):
+   ```
+   ALU_OUT = r1 + 2 = 1 + 2 = 3
+   (This instruction does not write to a register, it stores the value of r3 at address ALU_OUT)
+   ```
+
+9. `lw r13, r1, 2` (`32'h00208681`):
+   ```
+   ALU_OUT = r1 + 2 = 1 + 2 = 3
+   (This instruction loads the value from address ALU_OUT into r13, assuming the value at DM[3] is 0)
+   ```
+
+10. `beq r0, r0, 15` (`32'h00f00002`):
+    ```
+    ALU_OUT = NPC + 15 = Current PC + 15 (Branch taken because r0 == r0)
+    ```
+
+11. `add r14, r2, r2` (`32'h00210700`):
+    ```
+    r14 = r2 + r2 = 2 + 2 = 4
+    ALU_OUT = 4
+    ```
+
+12. `bne r0, r1, 20` (`32'h01409002`):
+    ```
+    ALU_OUT = NPC + 20 = Current PC + 20 (Branch taken because r0 != r1)
+    ```
+
+### Summary Table
+
+```html
+<table>
+  <tr>
+    <th>Instruction</th>
+    <th>ALU Output</th>
+  </tr>
+  <tr>
+    <td>add r6, r1, r2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>sub r7, r1, r2</td>
+    <td>0xFFFFFFFF</td>
+  </tr>
+  <tr>
+    <td>and r8, r1, r3</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>or r9, r2, r5</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td>xor r10, r1, r4</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>slt r11, r2, r4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>addi r12, r4, 5</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td>sw r3, r1, 2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>lw r13, r1, 2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>beq r0, r0, 15</td>
+    <td>Current PC + 15</td>
+  </tr>
+  <tr>
+    <td>add r14, r2, r2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>bne r0, r1, 20</td>
+    <td>Current PC + 20</td>
+  </tr>
+</table>
+```
+
