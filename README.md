@@ -415,7 +415,77 @@ use to clone the RISC-V core repository
      git clone https://github.com/vinayrayapati/iiitb_rv32i
      cd iiitb_rv32i
 
-    
+now in the codes of the RISC-V repo we get to see the memory (the instructions in the memory)
+it is as given in the below HTML TABLE 
+
+<table>
+  <tr>
+    <th>Instruction</th>
+    <th>Hexadecimal</th>
+    <th>Binary</th>
+  </tr>
+  <tr>
+    <td>add r6, r1, r2</td>
+    <td>32'h02208300</td>
+    <td>0000_0010_0010_0000_1000_0011_0000_0000</td>
+  </tr>
+  <tr>
+    <td>sub r7, r1, r2</td>
+    <td>32'h02209380</td>
+    <td>0000_0010_0010_0000_1001_0011_1000_0000</td>
+  </tr>
+  <tr>
+    <td>and r8, r1, r3</td>
+    <td>32'h0230a400</td>
+    <td>0000_0010_0011_0000_1010_0100_0000_0000</td>
+  </tr>
+  <tr>
+    <td>or r9, r2, r5</td>
+    <td>32'h02513480</td>
+    <td>0000_0010_0101_0001_0011_0100_1000_0000</td>
+  </tr>
+  <tr>
+    <td>xor r10, r1, r4</td>
+    <td>32'h0240c500</td>
+    <td>0000_0010_0100_0000_1100_0101_0000_0000</td>
+  </tr>
+  <tr>
+    <td>slt r11, r2, r4</td>
+    <td>32'h02415580</td>
+    <td>0000_0010_0100_0001_0101_0101_1000_0000</td>
+  </tr>
+  <tr>
+    <td>addi r12, r4, 5</td>
+    <td>32'h00520600</td>
+    <td>0000_0000_0101_0010_0000_0110_0000_0000</td>
+  </tr>
+  <tr>
+    <td>sw r3, r1, 2</td>
+    <td>32'h00209181</td>
+    <td>0000_0000_0010_0000_1001_0001_1000_0001</td>
+  </tr>
+  <tr>
+    <td>lw r13, r1, 2</td>
+    <td>32'h00208681</td>
+    <td>0000_0000_0010_0000_1000_0110_1000_0001</td>
+  </tr>
+  <tr>
+    <td>beq r0, r0, 15</td>
+    <td>32'h00f00002</td>
+    <td>0000_1111_0000_0000_0000_0000_0000_0010</td>
+  </tr>
+  <tr>
+    <td>add r14, r2, r2</td>
+    <td>32'h00210700</td>
+    <td>0000_0000_0010_0001_0000_0111_0000_0000</td>
+  </tr>
+  <tr>
+    <td>bne r0, r1, 20</td>
+    <td>32'h01409002</td>
+    <td>0001_0100_0000_1001_0000_0000_0000_0010</td>
+  </tr>
+</table>
+
 
    
 
