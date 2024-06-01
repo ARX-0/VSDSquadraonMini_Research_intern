@@ -584,7 +584,6 @@ Let's compute the ALU outputs for each instruction based on these initial values
 
 ### Summary Table
 
-```html
 <table>
   <tr>
     <th>Instruction</th>
@@ -639,5 +638,5 @@ Let's compute the ALU outputs for each instruction based on these initial values
     <td>Current PC + 20</td>
   </tr>
 </table>
-```
+
 
