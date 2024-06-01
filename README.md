@@ -416,6 +416,9 @@ use to clone the RISC-V core repository
      cd iiitb_rv32i
 
 now in the codes of the RISC-V repo we get to see the memory (the instructions in the memory)
+
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/waveforms_outputs/codes.png)
+
 it is as given in the below HTML TABLE 
 
 <table>
@@ -487,5 +490,9 @@ it is as given in the below HTML TABLE
 </table>
 
 
-   
+   ##### THE OVERALL waveform for the above table is given below 
+
+   ![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/waveforms_outputs/Screenshot%20from%202024-06-01%2019-59-34.png)
+
+for the waveform marked in purple 0->ADD,1->SUB,2->AND,3->OR,4->XOR,5->SLT,0->ADDI,1->LW,0->SW,0->BEQ
 
