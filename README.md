@@ -376,4 +376,46 @@ In the WB stage, the result from the ALU is written back to the destination regi
 Example: LW rd, offset(rs1)
 In the WB stage, the data read from memory is written to the destination register rd.
 
-## THIS CONCLUDES TASK II 
+## TASK III
+
+### Installation of required softwares GTKwave,iverilog.
+
+ To install iverilog
+                      
+      git clone https://github.com/steveicarus/iverilog.git
+      cd iverilog
+      sh autoconf.sh //To configure the iverilog in your local repository run the following command. 
+
+Autoconf in root…// shown succesfull else try the following command and repeat the above steps
+
+    sudo apt-get install autoconf
+
+Then configure the files
+
+      ./configure
+
+Finally install GTKwave and iverilog
+    
+
+         //sudo apt-get install package_name in ubuntu
+
+       sudo dnf install flex 
+       sudo dnf install gcc
+       sudo dnf install bison
+       sudo dnf install g++
+       sudo su
+       make install
+       sudo dnf install iverilog
+       sudo dnf install gtkwave 
+
+then we are set to go 
+ 
+use to clone the RISC-V core repository 
+
+     git clone https://github.com/vinayrayapati/iiitb_rv32i
+     cd iiitb_rv32i
+
+    
+
+   
+
