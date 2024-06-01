@@ -494,6 +494,8 @@ it is as given in the below HTML TABLE
 
    ![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/waveforms_outputs/Screenshot%20from%202024-06-01%2019-59-34.png)
 
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/waveforms_outputs/Screenshot%20from%202024-06-01%2020-00-39.png)
+
 for the waveform marked in purple 0->ADD,1->SUB,2->AND,3->OR,4->XOR,5->SLT,0->ADDI,1->LW,0->SW,0->BEQ
 
 The BEQ is given here as it dint fit there;
