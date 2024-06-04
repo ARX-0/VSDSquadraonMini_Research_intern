@@ -647,3 +647,5 @@ Let's compute the ALU outputs for each instruction based on these initial values
 
 ![VSD SQUADRON Mini Pinout diagram](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/VSDSQUADRON%20Mini%20Pin%20out.png)
 
+This is the updated PINOUT diagram for the VSD SQUADRON Mini that we are going to use on this (I created it reffering the below image and the repo 
+![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/pinout.jpg) 
