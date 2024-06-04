@@ -645,6 +645,8 @@ Let's compute the ALU outputs for each instruction based on these initial values
 #### Answering the question:-Why do we do all this 
 {Answer:-to know the vlsi design flow and how the processor works and to know that VLSI and embedded systems go hand in hand with eachother}
 
+The pin out diagrams are made available [LINK FOR PINOUT DIAGRAMS](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/PIN%20OUT%20diagrams)
+
 ![VSD SQUADRON Mini Pinout diagram](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/VSDSQUADRON%20Mini%20Pin%20out.png)
 
 This is the updated PINOUT diagram for the VSD SQUADRON Mini that we are going to use on this (I created it reffering the below image and the [repo](https://github.com/vsdip/vsdsquadron_pio)
