@@ -651,4 +651,40 @@ The pin out diagrams are made available [LINK FOR PINOUT DIAGRAMS](https://githu
 
 This is the updated PINOUT diagram for the VSD SQUADRON Mini that we are going to use on this (I created it reffering the below image and the [repo](https://github.com/vsdip/vsdsquadron_pio)
 
-![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/pinout.jpg) 
+### PROJECT TITLE :- Aquaculture Harnessing the Power of IoT and vsdsquadronmini
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Component</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>VSDSQUADRON Mini Board</td>
+      <td>1x</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>HC 05 Bluetooth Module</td>
+      <td>1x</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>pH Sensor</td>
+      <td>1x</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>DS18B20 Temperature Sensor Probe</td>
+      <td>1x</td>
+    </tr>
+  </tbody>
+</table>
+
+![circuit diagram for the implemintation](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/CKT%20DIAGRAM.png)
+
