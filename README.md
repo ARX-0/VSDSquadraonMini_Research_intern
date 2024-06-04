@@ -642,7 +642,8 @@ Let's compute the ALU outputs for each instruction based on these initial values
 </table>
 
 ## TASK IV
-### Answering the question:-Why do we do all this {answer to know the vlsi design flow and how the processor works and to know that VLSI and embedded systems go hand in hand with eachother}
+#### Answering the question:-Why do we do all this 
+{Answer:-to know the vlsi design flow and how the processor works and to know that VLSI and embedded systems go hand in hand with eachother}
 
 ![VSD SQUADRON Mini Pinout diagram](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/VSDSQUADRON%20Mini%20Pin%20out.png)
 
