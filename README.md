@@ -688,3 +688,106 @@ This is the updated PINOUT diagram for the VSD SQUADRON Mini that we are going t
 
 ![circuit diagram for the implemintation](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/CKT%20DIAGRAM.png)
 
+codes for the Temp and pH sensor 
+  ```
+
+#include <ch32v00x.h>
+#include <debug.h>
+
+void GPIO_Config(void) {
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+
+    // Enable clocks for GPIOA and ADC
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_ADC1, ENABLE);
+
+    // Configure PA1 (A1) and PA2 (A0) as analog input
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_6;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    // ADC configuration
+    ADC_InitTypeDef ADC_InitStructure = {0};
+    ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
+    ADC_InitStructure.ADC_ScanConvMode = DISABLE;
+    ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
+    ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+    ADC_InitStructure.ADC_NbrOfChannel = 1;
+    ADC_Init(ADC1, &ADC_InitStructure);
+
+    ADC_Cmd(ADC1, ENABLE);
+
+    // Start calibration
+    ADC_StartCalibration(ADC1);
+    while (ADC_GetCalibrationStatus(ADC1));
+}
+
+uint16_t readADC(uint8_t channel) {
+    ADC_RegularChannelConfig(ADC1, channel, 1, ADC_SampleTime_241Cycles);
+    ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+    while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET);
+    return ADC_GetConversionValue(ADC1);
+}
+
+void delay(int milliseconds) {
+    int count = milliseconds * 1200;  // Adjust based on your MCU clock speed
+    while(count--) {
+        __asm__("nop");
+    }
+}
+
+float readPH() {
+    int buffer_arr[10], temp;
+    unsigned long avgval = 0;
+
+    for (int i = 0; i < 10; i++) {
+        buffer_arr[i] = readADC(ADC_Channel_2);  // Read from PA2 (A0, channel 2)
+        delay(30);
+    }
+
+    // Sort the buffer array
+    for (int i = 0; i < 9; i++) {
+        for (int j = i + 1; j < 10; j++) {
+            if (buffer_arr[i] > buffer_arr[j]) {
+                temp = buffer_arr[i];
+                buffer_arr[i] = buffer_arr[j];/*  */
+                buffer_arr[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 2; i < 8; i++) {
+        avgval += buffer_arr[i];
+    }
+
+    float volt = (float)avgval * 3.3 / 4096 / 6;  // Convert to voltage
+    float ph_act = -5.70 * volt + 18.06;
+    return ph_act;
+}
+
+float readTemperature() {
+    uint16_t tempValue = readADC(ADC_Channel_1);  // Read from PA1 (A1, channel 1)
+    float temperatureVoltage = (tempValue * 3.3) / 4096;
+    // Example conversion, replace with actual formula as per your temperature sensor datasheet
+    float temperatureC = (temperatureVoltage - 0.5) * 100;
+    return temperatureC;
+}
+
+int main(void) {
+    SystemInit();
+    GPIO_Config();
+
+    while (1) {
+        float phValue = readPH();
+        float temperatureC = readTemperature();
+        float temperatureF = temperatureC * 9.0 / 5.0 + 32.0;
+
+        // Print the values (assume a serial print function or equivalent is available)
+        // Replace with actual serial communication code as needed
+        printf("pH Value: %.2f\n", phValue);
+        printf("Temperature: %.2f C, %.2f F\n", temperatureC, temperatureF);
+
+        delay(1000);
+    }
+}
+  ```
