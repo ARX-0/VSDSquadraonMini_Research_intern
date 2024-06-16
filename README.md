@@ -655,143 +655,34 @@ The pin out diagrams are made available [LINK FOR PINOUT DIAGRAMS](https://githu
 
 This is the updated PINOUT diagram for the VSD SQUADRON Mini that we are going to use on this (I created it reffering the below image and the [repo](https://github.com/vsdip/vsdsquadron_pio)
 
-### PROJECT TITLE :- Aquaculture Harnessing the Power of IoT and vsdsquadronmini
+I have made a Memory game using the above board 
+(my previous motive was to use a HC-05 bluetooth module and send analog values to my phone due to lack of resources and my time constrains :( i was not able to deliver it)
 
+However my main motive is not to show you how the memory game works rather i would like to introduce you to connecting your vsdsquadron mini to Arduino studio and uploading from it :)
 
-<table>
-  <thead>
-    <tr>
-      <th>Serial Number</th>
-      <th>Component</th>
-      <th>Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>VSDSQUADRON Mini Board</td>
-      <td>1x</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>HC 05 Bluetooth Module</td>
-      <td>1x</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>pH Sensor</td>
-      <td>1x</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>DS18B20 Temperature Sensor Probe</td>
-      <td>1x</td>
-    </tr>
-  </tbody>
-</table>
+open the following [repo](https://github.com/openwch/arduino_core_ch32#How-to-use) contains the arduino peripherals for the CH32V00x board that is the VSDsquadron mini 
 
-![circuit diagram for the implemintation](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/images/CKT%20DIAGRAM.png)
+coppy paste the url ie the given url given in the website 
 
-codes for the Temp and pH sensor 
-  ```
+                https://github.com/openwch/board_manager_files/raw/main/package_ch32v_index.json
 
-#include <ch32v00x.h>
-#include <debug.h>
+click on the "Preferences"
+![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/feded355-3b0b-4e54-b0f4-483e0348983f)
 
-void GPIO_Config(void) {
-    GPIO_InitTypeDef GPIO_InitStructure = {0};
+and paste it in the "Additional boards manager URL's"
 
-    // Enable clocks for GPIOA and ADC
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_ADC1, ENABLE);
+![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/44a2c4fa-8486-492e-a709-34e9019a7e4a)
 
-    // Configure PA1 (A1) and PA2 (A0) as analog input
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_6;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
+in the "Boards manager" searxh for ch32v
 
-    // ADC configuration
-    ADC_InitTypeDef ADC_InitStructure = {0};
-    ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
-    ADC_InitStructure.ADC_ScanConvMode = DISABLE;
-    ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
-    ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
-    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-    ADC_InitStructure.ADC_NbrOfChannel = 1;
-    ADC_Init(ADC1, &ADC_InitStructure);
+![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/c15309dc-32fe-48c8-861c-f1bd5f987d92)
 
-    ADC_Cmd(ADC1, ENABLE);
+click install .....
 
-    // Start calibration
-    ADC_StartCalibration(ADC1);
-    while (ADC_GetCalibrationStatus(ADC1));
-}
+reffer the url for the documentation it mainly consist of how you can manipulate the peripherals the 
+ 
+                https://github.com/openwch/arduino_core_ch32/tree/main/variants/CH32V00x/CH32V003F4
 
-uint16_t readADC(uint8_t channel) {
-    ADC_RegularChannelConfig(ADC1, channel, 1, ADC_SampleTime_241Cycles);
-    ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-    while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET);
-    return ADC_GetConversionValue(ADC1);
-}
+these are few examples from the [link](https://github.com/openwch/arduino_core_ch32/blob/main/variants/CH32V00x/CH32V003F4/variant_CH32V003F4.cpp)
 
-void delay(int milliseconds) {
-    int count = milliseconds * 1200;  // Adjust based on your MCU clock speed
-    while(count--) {
-        __asm__("nop");
-    }
-}
-
-float readPH() {
-    int buffer_arr[10], temp;
-    unsigned long avgval = 0;
-
-    for (int i = 0; i < 10; i++) {
-        buffer_arr[i] = readADC(ADC_Channel_2);  // Read from PA2 (A0, channel 2)
-        delay(30);
-    }
-
-    // Sort the buffer array
-    for (int i = 0; i < 9; i++) {
-        for (int j = i + 1; j < 10; j++) {
-            if (buffer_arr[i] > buffer_arr[j]) {
-                temp = buffer_arr[i];
-                buffer_arr[i] = buffer_arr[j];/*  */
-                buffer_arr[j] = temp;
-            }
-        }
-    }
-
-    for (int i = 2; i < 8; i++) {
-        avgval += buffer_arr[i];
-    }
-
-    float volt = (float)avgval * 3.3 / 4096 / 6;  // Convert to voltage
-    float ph_act = -5.70 * volt + 18.06;
-    return ph_act;
-}
-
-float readTemperature() {
-    uint16_t tempValue = readADC(ADC_Channel_1);  // Read from PA1 (A1, channel 1)
-    float temperatureVoltage = (tempValue * 3.3) / 4096;
-    // Example conversion, replace with actual formula as per your temperature sensor datasheet
-    float temperatureC = (temperatureVoltage - 0.5) * 100;
-    return temperatureC;
-}
-
-int main(void) {
-    SystemInit();
-    GPIO_Config();
-
-    while (1) {
-        float phValue = readPH();
-        float temperatureC = readTemperature();
-        float temperatureF = temperatureC * 9.0 / 5.0 + 32.0;
-
-        // Print the values (assume a serial print function or equivalent is available)
-        // Replace with actual serial communication code as needed
-        printf("pH Value: %.2f\n", phValue);
-        printf("Temperature: %.2f C, %.2f F\n", temperatureC, temperatureF);
-
-        delay(1000);
-    }
-}
-  ```
+![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/e28e2230-4de4-47c8-86ce-1e0c083d0233)
