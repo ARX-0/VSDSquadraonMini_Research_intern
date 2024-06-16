@@ -642,47 +642,61 @@ Let's compute the ALU outputs for each instruction based on these initial values
 </table>
 
 ## TASK IV
-#### Answering the question:-Why do we do all this 
-{Answer:-to know the vlsi design flow and how the processor works and to know that VLSI and embedded systems go hand in hand with eachother}
+### Why Do We Do All This?
 
-The pin out diagrams are made available [LINK FOR PINOUT DIAGRAMS](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/PIN%20OUT%20diagrams)
+We delve into the intricacies of VLSI (Very-Large-Scale Integration) design flow and processor workings to understand the fundamental aspects of how processors are constructed and operate. Additionally, exploring the relationship between VLSI and embedded systems helps us realize that these two fields complement each other seamlessly, with VLSI providing the hardware framework and embedded systems bringing them to life with software functionality.
+
+### Updated Pinout Diagram for VSD SQUADRON Mini
+
+Below is the updated pinout diagram for the VSD SQUADRON Mini, which is essential for our ongoing projects. This updated version was created by referring to the original image and the repository linked below.
 
 ![VSD SQUADRON Mini Pinout diagram](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/VSDSQUADRON%20Mini%20Pin%20out.jpeg)
-![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/myownwork.png)
-![](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/vsd%20pinout%20image%20update%20final%20.png)
+![Pinout Work](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/myownwork.png)
+![Final Pinout Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/vsd%20pinout%20image%20update%20final%20.png)
 
+You can find the pinout diagrams at this [link](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/PIN%20OUT%20diagrams).
 
+### Personal Project: Memory Game
 
-This is the updated PINOUT diagram for the VSD SQUADRON Mini that we are going to use on this (I created it reffering the below image and the [repo](https://github.com/vsdip/vsdsquadron_pio)
+While my initial plan was to use an HC-05 Bluetooth module to send analog values to my phone, due to resource constraints and time limitations, I pivoted to creating a memory game using the VSD SQUADRON Mini board. The memory game is a small, fun project that showcases the board's capabilities.
 
-I have made a Memory game using the above board 
-(my previous motive was to use a HC-05 bluetooth module and send analog values to my phone due to lack of resources and my time constrains :( i was not able to deliver it)
+### Connecting VSD SQUADRON Mini to Arduino Studio
 
-However my main motive is not to show you how the memory game works rather i would like to introduce you to connecting your vsdsquadron mini to Arduino studio and uploading from it :)
+Here's a guide to connect your VSD SQUADRON Mini to Arduino Studio and upload your code. This process leverages the Arduino peripherals for the CH32V00x board, which the VSD SQUADRON Mini is based on.
 
-open the following [repo](https://github.com/openwch/arduino_core_ch32#How-to-use) contains the arduino peripherals for the CH32V00x board that is the VSDsquadron mini 
+#### Step-by-Step Guide
 
-coppy paste the url ie the given url given in the website 
+1. **Open the Repository**
+   Visit the [Arduino core CH32 repository](https://github.com/openwch/arduino_core_ch32#How-to-use).
 
-                https://github.com/openwch/board_manager_files/raw/main/package_ch32v_index.json
+2. **Copy the URL**
+   Copy the following URL for the board manager:
+   ```
+   https://github.com/openwch/board_manager_files/raw/main/package_ch32v_index.json
+   ```
 
-click on the "Preferences"
-![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/feded355-3b0b-4e54-b0f4-483e0348983f)
+3. **Open Arduino Preferences**
+   Open the Arduino IDE, go to "Preferences," and paste the copied URL into the "Additional Boards Manager URLs" field.
 
-and paste it in the "Additional boards manager URL's"
+   ![Preferences](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/feded355-3b0b-4e54-b0f4-483e0348983f)
 
-![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/44a2c4fa-8486-492e-a709-34e9019a7e4a)
+4. **Boards Manager**
+   In the Boards Manager, search for "CH32V" and click install.
 
-in the "Boards manager" searxh for ch32v
+   ![Boards Manager](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/c15309dc-32fe-48c8-861c-f1bd5f987d92)
 
-![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/c15309dc-32fe-48c8-861c-f1bd5f987d92)
+5. **Documentation and Examples**
+   Refer to the documentation for detailed instructions on manipulating the peripherals. You can find it [here](https://github.com/openwch/arduino_core_ch32/tree/main/variants/CH32V00x/CH32V003F4).
 
-click install .....
+   The repository also contains various examples to get you started. Check out the example code:
 
-reffer the url for the documentation it mainly consist of how you can manipulate the peripherals the 
- 
-                https://github.com/openwch/arduino_core_ch32/tree/main/variants/CH32V00x/CH32V003F4
+   ![Example Code](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/e28e2230-4de4-47c8-86ce-1e0c083d0233)
 
-these are few examples from the [link](https://github.com/openwch/arduino_core_ch32/blob/main/variants/CH32V00x/CH32V003F4/variant_CH32V003F4.cpp)
+the working clip 
+### Watch the working Video 
 
-![image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/e28e2230-4de4-47c8-86ce-1e0c083d0233)
+#### Video 1
+[![Watch the video](https://img.youtube.com/vi/_V6kYMWt_jE/0.jpg)](https://youtu.be/_V6kYMWt_jE)
+
+#### Video 2
+[![Watch the video](https://img.youtube.com/vi/I4vbPNeaH7s/0.jpg)](https://youtube.com/shorts/I4vbPNeaH7s)
