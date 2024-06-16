@@ -700,3 +700,5 @@ the working clip
 
 #### Video 2
 [![Watch the video](https://img.youtube.com/vi/I4vbPNeaH7s/0.jpg)](https://youtube.com/shorts/I4vbPNeaH7s)
+
+refer [codes.ino](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/codes.ino) for the codes 
