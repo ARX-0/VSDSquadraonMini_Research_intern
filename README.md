@@ -656,7 +656,7 @@ Below is the updated pinout diagram for the VSD SQUADRON Mini, which is essentia
 
 You can find the pinout diagrams at this [link](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/PIN%20OUT%20diagrams).
 
-# Simplifying CH32V Development Using Arduino Studio and implementation of Memory Game using arduino studio
+# Simplifying CH32V Development Using Arduino Studio and implementation of Memory Game using Arduino Studio
 
 <table>
   <thead>
@@ -691,6 +691,8 @@ You can find the pinout diagrams at this [link](https://github.com/ARX-0/VSDSqua
 </table>
 
 ![vsd pinout for ckt](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/29bb9bc6-d9db-45c0-894f-0b335271cb0a)
+
+refer [codes.ino](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/codes.ino) for the codes 
 
 
 While my initial plan was to use an HC-05 Bluetooth module to send analog values to my phone, due to resource constraints and time limitations, I pivoted to creating a memory game using the VSD SQUADRON Mini board. The memory game is a small, fun project that showcases the board's capabilities.
@@ -736,4 +738,3 @@ the working clip
 #### Video 2
 [![Watch the video](https://img.youtube.com/vi/I4vbPNeaH7s/0.jpg)](https://youtube.com/shorts/I4vbPNeaH7s)
 
-refer [codes.ino](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/codes.ino) for the codes 
