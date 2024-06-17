@@ -701,4 +701,8 @@ the working clip
 #### Video 2
 [![Watch the video](https://img.youtube.com/vi/I4vbPNeaH7s/0.jpg)](https://youtube.com/shorts/I4vbPNeaH7s)
 
+
+![vsd pinout for ckt](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/9adb3f1b-94fa-4a6f-821a-81681a14032a)
+
+
 refer [codes.ino](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/codes.ino) for the codes 
