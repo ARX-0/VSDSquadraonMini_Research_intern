@@ -656,11 +656,46 @@ Below is the updated pinout diagram for the VSD SQUADRON Mini, which is essentia
 
 You can find the pinout diagrams at this [link](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/PIN%20OUT%20diagrams).
 
-### Personal Project: Memory Game
+# Simplifying CH32V Development Using Arduino Studio and implementation of Memory Game using arduino studio
+
+<table>
+  <thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Item</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>LEDs</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jumper wires</td>
+      <td>1 set</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>4-pin push buttons</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>VSD Squadron Mini</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+![vsd pinout for ckt](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/29bb9bc6-d9db-45c0-894f-0b335271cb0a)
+
 
 While my initial plan was to use an HC-05 Bluetooth module to send analog values to my phone, due to resource constraints and time limitations, I pivoted to creating a memory game using the VSD SQUADRON Mini board. The memory game is a small, fun project that showcases the board's capabilities.
 
-### Connecting VSD SQUADRON Mini to Arduino Studio
+## Connecting VSD SQUADRON Mini to Arduino Studio
 
 Here's a guide to connect your VSD SQUADRON Mini to Arduino Studio and upload your code. This process leverages the Arduino peripherals for the CH32V00x board, which the VSD SQUADRON Mini is based on.
 
@@ -700,9 +735,5 @@ the working clip
 
 #### Video 2
 [![Watch the video](https://img.youtube.com/vi/I4vbPNeaH7s/0.jpg)](https://youtube.com/shorts/I4vbPNeaH7s)
-
-
-![vsd pinout for ckt](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/assets/143102635/9adb3f1b-94fa-4a6f-821a-81681a14032a)
-
 
 refer [codes.ino](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/codes.ino) for the codes 
