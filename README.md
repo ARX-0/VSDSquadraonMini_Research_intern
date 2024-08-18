@@ -2,6 +2,18 @@
 
 Repository for documenting and accounting the progression of the internship.
 
+# HIGHLIGHTS 
+
+### Updated Pinout Diagram for VSD SQUADRON Mini thats my contribution towards opensource 
+
+Below is the updated pinout diagram for the VSD SQUADRON Mini, which is essential for our ongoing projects. This updated version was created by referring to the original image and the repository linked below.
+
+![VSD SQUADRON Mini Pinout diagram](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/VSDSQUADRON%20Mini%20Pin%20out.jpeg)
+![Pinout Work](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/myownwork.png)
+![Final Pinout Image](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/blob/main/PIN%20OUT%20diagrams/vsd%20pinout%20image%20update%20final%20.png)
+
+
+
 ## TASK - I
 
 (Executed in VMware Ubuntu 18.04 environment)
