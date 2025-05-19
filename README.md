@@ -668,7 +668,7 @@ Below is the updated pinout diagram for the VSD SQUADRON Mini, which is essentia
 
 You can find the pinout diagrams at this [link](https://github.com/ARX-0/VSDSquadraonMini_Research_intern/tree/main/PIN%20OUT%20diagrams).
 
-# Simplifying CH32V Development Using Arduino Studio and implementation of Memory Game using Arduino Studio
+# Simplifying CH32V Development Using (Arduino Studio integration is my novelty apart form the pinout :)  ) and implementation of Memory Game using Arduino Studio
 
 <table>
   <thead>
